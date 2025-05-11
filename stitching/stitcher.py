@@ -92,13 +92,16 @@ class Stitcher:
         return verbose_stitching(self, images, feature_masks, verbose_dir)
 
     def stitch(self, images, feature_masks=[]):
+        # 数据预处理
         self.images = Images.of(
             images, self.medium_megapix, self.low_megapix, self.final_megapix
         )
-
         imgs = self.resize_medium_resolution()
+
+        # 特征检测与匹配
         features = self.find_features(imgs, feature_masks)
         matches = self.match_features(features)
+
         imgs, features, matches = self.subset(imgs, features, matches)
         cameras = self.estimate_camera_parameters(features, matches)
         cameras = self.refine_camera_parameters(features, matches, cameras)

@@ -267,13 +267,13 @@ def create_parser():
     parser.add_argument(
         "--preview",
         action="store_true",
-        help="Opens a preview window with the stitched result",
+        help="Opens a preview window with the stitched results",
     )
     parser.add_argument(
         "--output",
         action="store",
-        default="result.jpg",
-        help="The default is 'result.jpg'",
+        default="results.jpg",
+        help="The default is 'results.jpg'",
         type=str,
     )
     parser.add_argument(
